@@ -32,7 +32,7 @@ public class Application {
 
     @RequestMapping("/processForm")
     public String processForm(Product product) {
-        productService.addProduct(product);
+        productService.saveOrUpdates(product);
         return "processFormWithNewProduct";
     }
 
@@ -45,8 +45,14 @@ public class Application {
 
     @RequestMapping("/showProducts")
     public String showProducts(Model model){
-        model.addAttribute("products",productService.getAll());
+        model.addAttribute("products",productService.findAll());
         return "showProducts";
+    }
+
+    @RequestMapping(value = "/deleteById", method = RequestMethod.GET)
+    public String deleteId(Model model, @RequestParam Long id){
+        productService.deleteId(id);
+        return "delete";
     }
 
 }

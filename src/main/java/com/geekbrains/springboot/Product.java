@@ -1,15 +1,25 @@
 package com.geekbrains.springboot;
 
-public class Product {
-    private long id;
-    private String title;
-    private long coast;
 
-    public long getId() {
+import javax.persistence.*;
+
+@Entity
+@Table(name = "products")
+public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "product_id")
+    private Long id;
+    @Column(name = "product_title")
+    private String title;
+    @Column(name = "product_coast")
+    private int coast;
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -21,11 +31,11 @@ public class Product {
         this.title = title;
     }
 
-    public long getCoast() {
+    public int getCoast() {
         return coast;
     }
 
-    public void setCoast(long coast) {
+    public void setCoast(int coast) {
         this.coast = coast;
     }
 }

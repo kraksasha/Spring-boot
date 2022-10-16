@@ -1,6 +1,7 @@
 package com.geekbrains.springboot;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,5 +35,4 @@ public class ProductRepository {
         }
         return null;
     }
-
 }
