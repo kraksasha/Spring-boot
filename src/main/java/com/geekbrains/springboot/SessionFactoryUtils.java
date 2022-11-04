@@ -11,6 +11,7 @@ public class SessionFactoryUtils {
     private final SessionFactory factory = new Configuration()
             .configure("hibernate.cfg.xml")
             .addAnnotatedClass(Product.class)
+            .addAnnotatedClass(Buyer.class)
             .buildSessionFactory();
 
     public Session getSession(){

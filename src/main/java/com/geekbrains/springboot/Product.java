@@ -2,6 +2,7 @@ package com.geekbrains.springboot;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -14,6 +15,22 @@ public class Product {
     private String title;
     @Column(name = "product_coast")
     private int coast;
+
+    @ManyToMany
+    @JoinTable(name = "products_and_buyers",
+            joinColumns = @JoinColumn(name = "product_id_tab"),
+            inverseJoinColumns = @JoinColumn(name = "buyers_id")
+    )
+
+    private List<Buyer> buyers;
+
+    public List<Buyer> getBuyers() {
+        return buyers;
+    }
+
+    public void setBuyers(List<Buyer> buyers) {
+        this.buyers = buyers;
+    }
 
     public Long getId() {
         return id;
@@ -38,4 +55,22 @@ public class Product {
     public void setCoast(int coast) {
         this.coast = coast;
     }
+
+    @Override
+    public String toString() {
+        String allBuyers = "";
+        for (Buyer o : buyers) {
+            allBuyers += o.getName() + " ";
+        }
+        return "Product [" + id + " " + title + " " + coast + " " + allBuyers + "]";
+    }
+
+    public String toStringNet(){
+        String allBuyers = "";
+        for (Buyer o : buyers) {
+            allBuyers += o.getName() + " ";
+        }
+        return "[ " + allBuyers + " ]";
+    }
 }
+

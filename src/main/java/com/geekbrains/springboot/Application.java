@@ -55,4 +55,16 @@ public class Application {
         return "delete";
     }
 
+    @RequestMapping(value = "/showProductsBuyerId", method = RequestMethod.GET)
+    public String showProductsBuyersId(Model model, @RequestParam Long id){
+        model.addAttribute("products",productService.productsBuyersId(id));
+        return "showProductsBuyersIdRes";
+    }
+
+    @RequestMapping(value = "/showBuyersProductId", method = RequestMethod.GET)
+    public String showBuyersProductId(Model model, @RequestParam Long id){
+        model.addAttribute("buyers", productService.buyersProductId(id));
+        return "showBuyersProductIdRes";
+    }
+
 }

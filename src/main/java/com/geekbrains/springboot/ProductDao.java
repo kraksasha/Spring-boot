@@ -2,7 +2,7 @@ package com.geekbrains.springboot;
 
 import org.hibernate.Session;
 import org.springframework.stereotype.Component;
-
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -33,7 +33,7 @@ public class ProductDao {
     public List<Product> findAll(){
         try(Session session = sessionFactoryUtils.getSession()){
             session.beginTransaction();
-            List<Product> list = session.createQuery("from Product ").getResultList();
+            List<Product> list = session.createQuery("from Product").getResultList();
             return list;
         }
     }
@@ -44,6 +44,23 @@ public class ProductDao {
             Product product = session.get(Product.class, id);
             session.delete(product);
             session.getTransaction().commit();
+        }
+    }
+
+    public List<String> productsByIdBuyer(Long id){
+        try (Session session = sessionFactoryUtils.getSession()) {
+            session.beginTransaction();
+            Buyer buyer = session.get(Buyer.class,id);
+            String allProducts = "";
+            for (Product o : buyer.getProducts()) {
+                allProducts += o.getTitle() + " ";
+            }
+            String s[] = allProducts.split(" ");
+            List<String> list = new ArrayList<>();
+            for (int i = 0; i < s.length; i++){
+                list.add(s[i]);
+            }
+            return list;
         }
     }
 }

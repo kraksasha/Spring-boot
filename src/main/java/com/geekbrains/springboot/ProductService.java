@@ -9,9 +9,11 @@ import java.util.List;
 public class ProductService {
 //    private ProductRepository repository;
     private final ProductDao productDao;
+    private final BuyersDao buyersDao;
 
-    public ProductService(ProductDao productDao) {
+    public ProductService(ProductDao productDao, BuyersDao buyersDao) {
         this.productDao = productDao;
+        this.buyersDao = buyersDao;
     }
 
     public void saveOrUpdates(Product product){
@@ -41,6 +43,14 @@ public class ProductService {
 
     public void deleteId(Long id){
         productDao.deleteById(id);
+    }
+
+    public List<String> productsBuyersId(Long id){
+        return productDao.productsByIdBuyer(id);
+    }
+
+    public List<String> buyersProductId(Long id){
+        return buyersDao.buyersByIdProduct(id);
     }
 
 //    public List<Product> getAll(){
