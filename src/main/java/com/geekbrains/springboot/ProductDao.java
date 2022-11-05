@@ -51,14 +51,9 @@ public class ProductDao {
         try (Session session = sessionFactoryUtils.getSession()) {
             session.beginTransaction();
             Buyer buyer = session.get(Buyer.class,id);
-            String allProducts = "";
-            for (Product o : buyer.getProducts()) {
-                allProducts += o.getTitle() + " ";
-            }
-            String s[] = allProducts.split(" ");
             List<String> list = new ArrayList<>();
-            for (int i = 0; i < s.length; i++){
-                list.add(s[i]);
+            for (Product o : buyer.getProducts()) {
+                list.add(o.getTitle());
             }
             return list;
         }
