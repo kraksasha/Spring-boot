@@ -56,21 +56,5 @@ public class Product {
         this.coast = coast;
     }
 
-    @Override
-    public String toString() {
-        String allBuyers = "";
-        for (Buyer o : buyers) {
-            allBuyers += o.getName() + " ";
-        }
-        return "Product [" + id + " " + title + " " + coast + " " + allBuyers + "]";
-    }
-
-    public String toStringNet(){
-        String allBuyers = "";
-        for (Buyer o : buyers) {
-            allBuyers += o.getName() + " ";
-        }
-        return "[ " + allBuyers + " ]";
-    }
 }
 

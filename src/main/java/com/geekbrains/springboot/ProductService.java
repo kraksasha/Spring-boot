@@ -1,27 +1,29 @@
 package com.geekbrains.springboot;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
 //    private ProductRepository repository;
-    private final ProductDao productDao;
-    private final BuyersDao buyersDao;
+//    private final ProductDao productDao;
+    private ProductDaoIm productDaoIm;
+    private BuyersDaoIm buyersDaoIm;
 
-    public ProductService(ProductDao productDao, BuyersDao buyersDao) {
-        this.productDao = productDao;
-        this.buyersDao = buyersDao;
+    public ProductService(ProductDaoIm productDaoIm, BuyersDaoIm buyersDaoIm) {
+        this.productDaoIm = productDaoIm;
+        this.buyersDaoIm = buyersDaoIm;
     }
 
     public void saveOrUpdates(Product product){
-        productDao.saveOrUpdate(product);
+        productDaoIm.save(product);
     }
 
     public List<Product> findAll(){
-        return productDao.findAll();
+        return productDaoIm.findAll();
     }
 
 //    public ProductRepository getRepository() {
@@ -37,20 +39,30 @@ public class ProductService {
 //        repository.addPoduct(product);
 //    }
 
-    public Product getProductId(Long id){
-        return productDao.findById(id);
+    public Optional<Product> getProductId(Long id){
+        return productDaoIm.findById(id);
     }
-
+//
     public void deleteId(Long id){
-        productDao.deleteById(id);
+        productDaoIm.deleteById(id);
     }
-
+//
     public List<String> productsBuyersId(Long id){
-        return productDao.productsByIdBuyer(id);
+        Buyer buyer = buyersDaoIm.findById(id).get();
+            List<String> list = new ArrayList<>();
+            for (Product o : buyer.getProducts()) {
+                list.add(o.getTitle());
+            }
+        return list;
     }
-
+//
     public List<String> buyersProductId(Long id){
-        return buyersDao.buyersByIdProduct(id);
+        Product product = productDaoIm.findById(id).get();
+        List<String> list = new ArrayList<>();
+        for (Buyer o : product.getBuyers()) {
+            list.add(o.getName());
+        }
+        return list;
     }
 
 //    public List<Product> getAll(){

@@ -46,20 +46,4 @@ public class Buyer {
         this.name = name;
     }
 
-    @Override
-    public String toString() {
-        String allProducts = "";
-        for (Product o : products) {
-            allProducts += o.getTitle() + " ";
-        }
-        return "Buyer [" + id + " " + name + " " + allProducts + "]";
-    }
-
-    public String toStringNet(){
-        String allProducts = "";
-        for (Product o : products) {
-            allProducts += o.getTitle() + " ";
-        }
-        return "[ " + allProducts + " ]";
-    }
 }

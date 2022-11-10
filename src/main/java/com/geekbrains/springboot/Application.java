@@ -39,8 +39,7 @@ public class Application {
     @RequestMapping(path = "/showProductById", method = RequestMethod.GET)
     @ResponseBody
     public Product showProductId(Model model, @RequestParam long id){
-        Product product  = productService.getProductId(id);
-        return product;
+        return productService.getProductId(id).get();
     }
 
     @RequestMapping("/showProducts")
