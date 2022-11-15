@@ -30,6 +30,13 @@ public class Application {
         return "showForm";
     }
 
+    @RequestMapping("/showFormRest")
+    public String showFormRest(Model model) {
+        Product product = new Product();
+        model.addAttribute("product", product);
+        return "showFormRest";
+    }
+
     @RequestMapping("/processForm")
     public String processForm(Product product) {
         productService.saveOrUpdates(product);
@@ -51,19 +58,19 @@ public class Application {
     @RequestMapping(value = "/deleteById", method = RequestMethod.GET)
     public String deleteId(Model model, @RequestParam Long id){
         productService.deleteId(id);
-        return "delete";
+        return "redirect:/product/showProducts";
     }
 
-    @RequestMapping(value = "/showProductsBuyerId", method = RequestMethod.GET)
-    public String showProductsBuyersId(Model model, @RequestParam Long id){
-        model.addAttribute("products",productService.productsBuyersId(id));
-        return "showProductsBuyersIdRes";
-    }
-
-    @RequestMapping(value = "/showBuyersProductId", method = RequestMethod.GET)
-    public String showBuyersProductId(Model model, @RequestParam Long id){
-        model.addAttribute("buyers", productService.buyersProductId(id));
-        return "showBuyersProductIdRes";
-    }
+//    @RequestMapping(value = "/showProductsBuyerId", method = RequestMethod.GET)
+//    public String showProductsBuyersId(Model model, @RequestParam Long id){
+//        model.addAttribute("products",productService.productsBuyersId(id));
+//        return "showProductsBuyersIdRes";
+//    }
+//
+//    @RequestMapping(value = "/showBuyersProductId", method = RequestMethod.GET)
+//    public String showBuyersProductId(Model model, @RequestParam Long id){
+//        model.addAttribute("buyers", productService.buyersProductId(id));
+//        return "showBuyersProductIdRes";
+//    }
 
 }

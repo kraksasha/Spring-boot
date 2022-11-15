@@ -23,6 +23,12 @@
             <td>
                 <a class="btn btn-danger" th:href="@{'/product/deleteById' + '?id=' + ${product.id}}"  role="button">Remove</a>
             </td>
+
+            <td>
+                <form th:method="DELETE" th:action="@{/api/rest/products/{id}(id=${product.id})}">
+                    <input type="submit" value="DeleteMaping">
+                </form>
+            </td>
         </tr>
     </table>
 </div>

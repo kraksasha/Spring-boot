@@ -16,21 +16,21 @@ public class Product {
     @Column(name = "product_coast")
     private int coast;
 
-    @ManyToMany
-    @JoinTable(name = "products_and_buyers",
-            joinColumns = @JoinColumn(name = "product_id_tab"),
-            inverseJoinColumns = @JoinColumn(name = "buyers_id")
-    )
-
-    private List<Buyer> buyers;
-
-    public List<Buyer> getBuyers() {
-        return buyers;
-    }
-
-    public void setBuyers(List<Buyer> buyers) {
-        this.buyers = buyers;
-    }
+//    @ManyToMany
+//    @JoinTable(name = "products_and_buyers",
+//            joinColumns = @JoinColumn(name = "product_id_tab"),
+//            inverseJoinColumns = @JoinColumn(name = "buyers_id")
+//    )
+//
+//    private List<Buyer> buyers;
+//
+//    public List<Buyer> getBuyers() {
+//        return buyers;
+//    }
+//
+//    public void setBuyers(List<Buyer> buyers) {
+//        this.buyers = buyers;
+//    }
 
     public Long getId() {
         return id;

@@ -18,8 +18,9 @@ public class ProductService {
         this.buyersDaoIm = buyersDaoIm;
     }
 
-    public void saveOrUpdates(Product product){
+    public Product saveOrUpdates(Product product){
         productDaoIm.save(product);
+        return product;
     }
 
     public List<Product> findAll(){
@@ -47,23 +48,23 @@ public class ProductService {
         productDaoIm.deleteById(id);
     }
 //
-    public List<String> productsBuyersId(Long id){
-        Buyer buyer = buyersDaoIm.findById(id).get();
-            List<String> list = new ArrayList<>();
-            for (Product o : buyer.getProducts()) {
-                list.add(o.getTitle());
-            }
-        return list;
-    }
-//
-    public List<String> buyersProductId(Long id){
-        Product product = productDaoIm.findById(id).get();
-        List<String> list = new ArrayList<>();
-        for (Buyer o : product.getBuyers()) {
-            list.add(o.getName());
-        }
-        return list;
-    }
+//    public List<String> productsBuyersId(Long id){
+//        Buyer buyer = buyersDaoIm.findById(id).get();
+//            List<String> list = new ArrayList<>();
+//            for (Product o : buyer.getProducts()) {
+//                list.add(o.getTitle());
+//            }
+//        return list;
+//    }
+////
+//    public List<String> buyersProductId(Long id){
+//        Product product = productDaoIm.findById(id).get();
+//        List<String> list = new ArrayList<>();
+//        for (Buyer o : product.getBuyers()) {
+//            list.add(o.getName());
+//        }
+//        return list;
+//    }
 
 //    public List<Product> getAll(){
 //        return repository.getListproduct();
