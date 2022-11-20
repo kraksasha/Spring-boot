@@ -29,6 +29,12 @@
                     <input type="submit" value="DeleteMaping">
                 </form>
             </td>
+            <td>
+                <form th:method="POST" th:action="@{/api/rest/carts/{id}(id=${product.id})}">
+                    <input type="submit" value="addToCarts">
+                </form>
+            </td>
+
         </tr>
     </table>
 </div>

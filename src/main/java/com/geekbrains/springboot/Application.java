@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @SpringBootApplication
 @RequestMapping("/product")
 @Controller
@@ -60,6 +62,15 @@ public class Application {
         productService.deleteId(id);
         return "redirect:/product/showProducts";
     }
+
+    @RequestMapping("/carts")
+    public String showProductsToCart(Model model){
+        model.addAttribute("products",productService.findAllToCarts());
+        return "showProductsToCart";
+    }
+
+
+
 
 //    @RequestMapping(value = "/showProductsBuyerId", method = RequestMethod.GET)
 //    public String showProductsBuyersId(Model model, @RequestParam Long id){

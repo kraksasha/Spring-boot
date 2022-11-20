@@ -35,5 +35,10 @@ public class ProductRestController {
         productService.deleteId(id);
         return HttpStatus.OK.value();
     }
+//    @PostMapping("/added")
+//    public String addToGarbage(Product product){
+//        productService.addToGarbage(product);
+//        return "yes";
+//    }
 
 }

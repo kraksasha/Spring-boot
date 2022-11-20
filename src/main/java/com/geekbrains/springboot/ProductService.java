@@ -1,8 +1,6 @@
 package com.geekbrains.springboot;
 
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,10 +10,13 @@ public class ProductService {
 //    private final ProductDao productDao;
     private ProductDaoIm productDaoIm;
     private BuyersDaoIm buyersDaoIm;
+    private CartsSingleton cartsSingleton;
 
-    public ProductService(ProductDaoIm productDaoIm, BuyersDaoIm buyersDaoIm) {
+
+    public ProductService(ProductDaoIm productDaoIm, BuyersDaoIm buyersDaoIm, CartsSingleton cartsSingleton) {
         this.productDaoIm = productDaoIm;
         this.buyersDaoIm = buyersDaoIm;
+        this.cartsSingleton = cartsSingleton;
     }
 
     public Product saveOrUpdates(Product product){
@@ -25,6 +26,14 @@ public class ProductService {
 
     public List<Product> findAll(){
         return productDaoIm.findAll();
+    }
+
+    public List<Product> findAllToCarts(){
+        return cartsSingleton.getList();
+    }
+
+    public void deleteProductToCart(Long id){
+        cartsSingleton.deleteProductToCartId(id);
     }
 
 //    public ProductRepository getRepository() {
@@ -47,6 +56,12 @@ public class ProductService {
     public void deleteId(Long id){
         productDaoIm.deleteById(id);
     }
+
+    public Product addToCarts(Product product){
+        cartsSingleton.getList().add(product);
+        return product;
+    }
+
 //
 //    public List<String> productsBuyersId(Long id){
 //        Buyer buyer = buyersDaoIm.findById(id).get();

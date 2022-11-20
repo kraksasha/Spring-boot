@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Product list to cart</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<div class="container">
+  <h1>All products to cart</h1>
+  <table class="table">
+    <thead>
+    <tr class="thead-dark">
+      <td>Id</td>
+      <td>Title</td>
+      <td>Cost</td>
+    </tr>
+    </thead>
+    <tr th:each="product : ${products}">
+      <td th:text="${product.id}"/>
+      <td th:text="${product.title}"/>
+      <td th:text="${product.coast}"/>
+
+      <td>
+        <form th:method="DELETE" th:action="@{/api/rest/carts/{id}(id=${product.id})}">
+          <input type="submit" value="DeleteFromCarts">
+        </form>
+      </td>
+
+<!--      <td>-->
+<!--        <a class="btn btn-danger" th:href="@{'/api/rest/carts/deleteId' + '?id=' + ${product.id}}"  role="button">Remove</a>-->
+<!--      </td>-->
+    </tr>
+  </table>
+</div>
+</body>
+</html>
