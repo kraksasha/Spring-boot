@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
-<h1>Product is add</h1>
+<h1>Product added to cart</h1>
 <br>
 Id: <td th:text="${product.id}"/>
 <br>
@@ -10,8 +10,7 @@ Title: <td th:text="${product.title}"/>
 Coast: <td th:text="${product.coast}"/>
 <br>
 <td>
-    <a class="btn btn-danger" th:href="@{'/product/showProducts'}"  role="button">All products</a>
+    <a class="btn btn-danger" th:href="@{'/product/cart'}"  role="button">Cart</a>
 </td>
-
 </body>
 </html>

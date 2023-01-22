@@ -3,40 +3,42 @@
 <head>
     <title>Product list</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link th:href="@{/css/main.css}" type="text/css" rel="stylesheet" />
 </head>
 <body>
-<div class="container">
-    <h1>All products</h1>
+<div class="container_product">
+    <h1 class="head">All products</h1>
     <table class="table">
         <thead>
-        <tr class="thead-dark">
+        <tr class="thead-blue">
             <td>Id</td>
             <td>Title</td>
             <td>Cost</td>
         </tr>
         </thead>
-        <tr th:each="product : ${products}">
+        <tr class="table_inside" th:each="product : ${products}">
             <td th:text="${product.id}"/>
-            <td th:text="${product.title}"/>
+            <td th:text="${product.title}">
             <td th:text="${product.coast}"/>
 
             <td>
-                <a class="btn btn-danger" th:href="@{'/product/deleteById' + '?id=' + ${product.id}}"  role="button">Remove</a>
+                <a class="btn_add_cart btn-2" th:href="@{'/product/idAdd' + '?id=' + ${product.id}}"  role="button">addToCart</a>
             </td>
-
-            <td>
-                <form th:method="DELETE" th:action="@{/api/rest/products/{id}(id=${product.id})}">
-                    <input type="submit" value="DeleteMaping">
-                </form>
-            </td>
-            <td>
-                <form th:method="POST" th:action="@{/api/rest/carts/{id}(id=${product.id})}">
-                    <input type="submit" value="addToCarts">
-                </form>
-            </td>
-
         </tr>
     </table>
+    <td>
+        <a class="btn_cart" th:href="@{'/product/cart'}"  role="button">Cart</a>
+    </td>
+    <p class="quantity_products_in_cart">
+        ( <td th:text="${valueCart}"/> )
+    </p>
+    <p class="user">
+          User: <td th:text="${user.username}"/>
+    </p>
+
+    <form class="btn_sign_out" th:action="@{'/logout'}" method="post">
+        <input class="btn_sign_out_in btn-4" type="submit" value="Sign out" />
+    </form>
 </div>
 </body>
 </html>

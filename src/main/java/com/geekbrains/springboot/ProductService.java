@@ -6,17 +6,12 @@ import java.util.Optional;
 
 @Service
 public class ProductService {
-//    private ProductRepository repository;
-//    private final ProductDao productDao;
     private ProductDaoIm productDaoIm;
     private BuyersDaoIm buyersDaoIm;
-    private CartsSingleton cartsSingleton;
 
-
-    public ProductService(ProductDaoIm productDaoIm, BuyersDaoIm buyersDaoIm, CartsSingleton cartsSingleton) {
+    public ProductService(ProductDaoIm productDaoIm, BuyersDaoIm buyersDaoIm) {
         this.productDaoIm = productDaoIm;
         this.buyersDaoIm = buyersDaoIm;
-        this.cartsSingleton = cartsSingleton;
     }
 
     public Product saveOrUpdates(Product product){
@@ -28,38 +23,11 @@ public class ProductService {
         return productDaoIm.findAll();
     }
 
-    public List<Product> findAllToCarts(){
-        return cartsSingleton.getList();
-    }
-
-    public void deleteProductToCart(Long id){
-        cartsSingleton.deleteProductToCartId(id);
-    }
-
-//    public ProductRepository getRepository() {
-//        return repository;
-//    }
-//
-//    @Autowired
-//    public void setRepository(ProductRepository repository) {
-//        this.repository = repository;
-//    }
-
-//    public void addProduct(Product product){
-//        repository.addPoduct(product);
-//    }
-
     public Optional<Product> getProductId(Long id){
         return productDaoIm.findById(id);
     }
-//
     public void deleteId(Long id){
         productDaoIm.deleteById(id);
-    }
-
-    public Product addToCarts(Product product){
-        cartsSingleton.getList().add(product);
-        return product;
     }
 
 //

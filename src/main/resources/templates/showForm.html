@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Add new product</title>
+    <title>New product</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link th:href="@{/css/main.css}" type="text/css" rel="stylesheet" />
 </head>
 <body>
-<form th:action="@{'/product/processForm'}" th:object="${product}" method="get" >
-<!--    Id: <input type="number" th:field="*{id}"/>-->
+<h1 class="new_pr"> ADD NEW PRODUCT</h1>
+<form class="new_pr_form" th:action="@{'/product/processForm'}" th:object="${product}" method="get" >
     Title: <input type="text" th:field="*{title}"/>
+    <br>
     <br>
     Coast: <input type="number" th:field="*{coast}"/>
     <br>
-    <input type="submit" value="submit"/>
+    <br>
+    <input type="submit" value="Add"/>
 </form>
 </body>
 </html>

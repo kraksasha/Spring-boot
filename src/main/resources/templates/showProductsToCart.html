@@ -3,10 +3,15 @@
 <head>
   <title>Product list to cart</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link th:href="@{/css/main.css}" type="text/css" rel="stylesheet" />
 </head>
 <body>
-<div class="container">
-  <h1>All products to cart</h1>
+<div class="container_cart">
+  <h1>
+    <td>
+      <a class="btn_all_pr" th:href="@{'/product/showProducts'}"  role="button">All products</a>
+    </td>
+  </h1>
   <table class="table">
     <thead>
     <tr class="thead-dark">
@@ -16,21 +21,19 @@
     </tr>
     </thead>
     <tr th:each="product : ${products}">
-      <td th:text="${product.id}"/>
-      <td th:text="${product.title}"/>
-      <td th:text="${product.coast}"/>
+      <td th:text="${product.productId}"/>
+      <td th:text="${product.productName}"/>
+      <td th:text="${product.productCoast}"/>
 
       <td>
-        <form th:method="DELETE" th:action="@{/api/rest/carts/{id}(id=${product.id})}">
-          <input type="submit" value="DeleteFromCarts">
-        </form>
+        <a class="btn-danger_cart btn-3" th:href="@{'/product/idDelete' + '?id=' + ${product.id}}"  role="button">DeleteToCart</a>
       </td>
-
-<!--      <td>-->
-<!--        <a class="btn btn-danger" th:href="@{'/api/rest/carts/deleteId' + '?id=' + ${product.id}}"  role="button">Remove</a>-->
-<!--      </td>-->
     </tr>
   </table>
+  <td>
+    Total: <td th:text="${finalPrice}"/>
+  </td>
+  <br>
 </div>
 </body>
 </html>

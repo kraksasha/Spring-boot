@@ -1,8 +1,6 @@
 package com.geekbrains.springboot;
 
-
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "products")
