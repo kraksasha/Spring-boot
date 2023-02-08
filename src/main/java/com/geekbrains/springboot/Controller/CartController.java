@@ -1,5 +1,9 @@
-package com.geekbrains.springboot;
+package com.geekbrains.springboot.Controller;
 
+import com.geekbrains.springboot.Entity.Product;
+import com.geekbrains.springboot.Service.CartService;
+import com.geekbrains.springboot.Service.ProductService;
+import com.geekbrains.springboot.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +14,12 @@ import org.springframework.web.bind.annotation.*;
 public class CartController {
     private CartService cartService;
     private ProductService productService;
+    private UserService userService;
+    @Autowired
+    public void setUserService(UserService userService) {
+        this.userService = userService;
+    }
+
     @Autowired
     public void setProductService(ProductService productService) {
         this.productService = productService;
@@ -25,17 +35,16 @@ public class CartController {
     public String addToCarts(Model model, @RequestParam Long id){
         Product product = productService.getProductId(id).get();
         cartService.addToCarts(product);
-        model.addAttribute("product",product);
         return "redirect:/product/showProducts";
     }
 
     @RequestMapping("/cart")
     public String showProductsToCart(Model model){
         int sum = 0;
-        for (int i = 0; i < cartService.findAllToCarts().size(); i++){
-            sum = sum + cartService.findAllToCarts().get(i).getProductCoast();
+        for (int i = 0; i < userService.findProductListUserCart().size(); i++){
+            sum = sum + userService.findProductListUserCart().get(i).getProductCoast();
         }
-        model.addAttribute("products",cartService.findAllToCarts());
+        model.addAttribute("products",userService.findProductListUserCart());
         model.addAttribute("finalPrice",sum);
         return "showProductsToCart";
     }

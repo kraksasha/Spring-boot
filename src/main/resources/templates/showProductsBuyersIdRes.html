@@ -5,6 +5,6 @@
 </head>
 <body>
 <h1>All products this buyer</h1>
-<p th:each="product : ${products}" th:text="${product}" />
+<p th:each="product : ${products}" th:text="${product.title}" />
 </body>
 </html>
