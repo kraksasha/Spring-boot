@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<h1>New order</h1>
+<br>
+Id: <td th:text="${order.id}"/>
+<br>
+List product: <td th:text="${order.listProduct}"/>
+<br>
+Client: <td th:text="${order.clientName}"/>
+<br>
+Address: <td th:text="${order.addressClient}"/>
+<br>
+Price: <td th:text="${order.totalPrice}"/>
+<td>
+  <a class="btn btn-danger" th:href="@{'/product/showProducts'}"  role="button">All products</a>
+</td>
+
+</body>
+</html>

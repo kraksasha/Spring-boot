@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Product list</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link th:href="@{/css/main.css}" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<div class="container_product">
+  <h1 class="head">All products</h1>
+  <table class="table">
+    <thead>
+    <tr class="thead-blue">
+      <td>Id</td>
+      <td>Title</td>
+      <td>Cost</td>
+    </tr>
+    </thead>
+    <tr class="table_inside" th:each="product : ${products}">
+      <td th:text="${product.id}"/>
+      <td th:text="${product.title}">
+      <td th:text="${product.coast}"/>
+
+      <td>
+        <a class="btn-danger btn" th:href="@{'/product/deleteById' + '?id=' + ${product.id}}"  role="button">Remove</a>
+      </td>
+      <td>
+        <a class="btn_add_cart btn-2" th:href="@{'/product/idAdd' + '?id=' + ${product.id}}"  role="button">addToCart</a>
+      </td>
+    </tr>
+  </table>
+  <td>
+    <a class="btn_cart" th:href="@{'/product/cart'}"  role="button">Cart</a>
+  </td>
+  <p class="user">
+    User: <td th:text="${user.username}"/>
+  </p>
+  <form class="btn_sign_out" th:action="@{'/logout'}" method="post">
+    <input class="btn_sign_out_in btn-4" type="submit" value="Sign out" />
+  </form>
+  <td>
+    <a class="btn_add_product" th:href="@{'/product/showForm'}"  role="button">Add Product</a>
+  </td>
+  <p class="quantity_products_in_cart_ad">
+    ( <td th:text="${valueCart}"/> )
+  </p>
+  <td>
+    <a class="btn_my_orders btn-6" th:href="@{'/product/myOrders'}"  role="button">My orders</a>
+  </td>
+</div>
+</body>
+</html>

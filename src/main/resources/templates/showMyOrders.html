@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Product list</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <link th:href="@{/css/main.css}" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<div class="container_product">
+  <h1 class="head">My orders</h1>
+  <table class="table">
+    <thead>
+    <tr class="thead-blue">
+      <td>Id</td>
+      <td>List product</td>
+      <td>Address</td>
+      <td>Total price</td>
+    </tr>
+    </thead>
+    <tr class="table_inside" th:each="order : ${orders}">
+      <td th:text="${order.id}"/>
+      <td th:text="${order.listProduct}">
+      <td th:text="${order.addressClient}"/>
+      <td th:text="${order.totalPrice}"/>
+    </tr>
+  </table>
+  <td>
+    <a class="btn_all_products btn-7" th:href="@{'/product/showProducts'}"  role="button">All products</a>
+  </td>
+</div>
+</body>
+</html>

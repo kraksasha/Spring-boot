@@ -1,0 +1,224 @@
+body{
+    background-color: bisque;
+}
+.head{
+    color: darkgoldenrod;
+}
+.btn-danger {
+    width: 60px;
+    height: 10px;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+    7px 7px 20px 0px rgba(0,0,0,.1),
+    4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+}
+.btn {
+    background: rgb(255,0,0);
+    background: linear-gradient(0deg, rgba(255,0,10,1) 0%, rgba(255,0,20,1) 100%);
+    border: none;
+}
+.btn:hover {
+    background: rgb(255,0,100);
+    background: linear-gradient(0deg, rgba(255,3,120,1) 0%, rgba(255,0,100,1) 100%);
+}
+.btn-danger_cart {
+    width: 80px;
+    height: 10px;
+    color: black;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+    7px 7px 20px 0px rgba(0,0,0,.1),
+    4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+}
+.btn-3 {
+    background: rgb(255,0,0);
+    background: linear-gradient(0deg, rgba(255,0,10,1) 0%, rgba(255,0,20,1) 100%);
+    border: none;
+}
+.btn-3:hover {
+    background: rgb(255,0,100);
+    background: linear-gradient(0deg, rgba(255,3,120,1) 0%, rgba(255,0,100,1) 100%);
+}
+.btn_add_cart {
+    width: 60px;
+    height: 10px;
+    color: black;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+    7px 7px 20px 0px rgba(0,0,0,.1),
+    4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+}
+.btn-2 {
+    background: rgb(127,255,0);
+    background: linear-gradient(0deg, rgba(6,255,131,1) 0%, rgba(127,255,120,2) 100%);
+    border: none;
+}
+.btn-2:hover {
+    background: rgb(127,255,50);
+    background: linear-gradient(0deg, rgba(127,255,100,4) 0%, rgba(127,255,190,2) 100%);
+}
+.btn_cart{
+    position: absolute;
+    top: 35px;
+    left: 300px;
+}
+.table{
+    width: 100%;
+    border: none;
+    margin-bottom: 20px;
+}
+.table {
+    width: 100%;
+    border: none;
+    margin-bottom: 20px;
+}
+.table thead th {
+    font-weight: bold;
+    text-align: left;
+    border: none;
+    padding: 10px 15px;
+    background: #d8d8d8;
+    font-size: 14px;
+}
+.table thead tr th:first-child {
+    border-radius: 8px 0 0 8px;
+}
+.table thead tr th:last-child {
+    border-radius: 0 8px 8px 0;
+}
+.table tbody td {
+    text-align: left;
+    border: none;
+    padding: 10px 15px;
+    font-size: 14px;
+    vertical-align: top;
+}
+.table tbody tr:nth-child(even){
+    background: #f3f3f3;
+}
+.table tbody tr td:first-child {
+    border-radius: 8px 0 0 8px;
+}
+.table tbody tr td:last-child {
+    border-radius: 0 8px 8px 0;
+}
+.btn_all_pr{
+    color: darkolivegreen;
+}
+.auth{
+    position: absolute;
+    left: 500px;
+}
+.auth_form{
+    position: absolute;
+    top: 100px;
+    left: 500px;
+}
+.btn_reg{
+    position: absolute;
+    top: 182px;
+    left: 600px;
+}
+.regh{
+    position: absolute;
+    left: 500px;
+}
+.reg_from{
+    position: absolute;
+    top: 100px;
+    left: 500px;
+}
+.user{
+    position: absolute;
+    top: 20px;
+    left: 210px;
+}
+.btn_add_product{
+    position: absolute;
+    top: 35px;
+    left: 450px;
+}
+.new_pr{
+    position: absolute;
+    left: 500px;
+}
+.new_pr_form{
+    position: absolute;
+    top: 100px;
+    left: 500px;
+}
+.btn_sign_out_in{
+    width: 100px;
+    height: 40px;
+    color: white;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+    7px 7px 20px 0px rgba(0,0,0,.1),
+    4px 4px 5px 0px rgba(0,0,0,.1);
+    outline: none;
+}
+.btn-4 {
+    background: rgb(255,0,0);
+    background: linear-gradient(0deg, rgba(255,0,10,1) 0%, rgba(255,0,20,1) 100%);
+    border: none;
+}
+.btn-4:hover {
+    background: rgb(255,0,100);
+    background: linear-gradient(0deg, rgba(255,3,120,1) 0%, rgba(255,0,100,1) 100%);
+}
+.btn_sign_out{
+    position: absolute;
+    top: 25px;
+    left: 1310px;
+}
+.quantity_products_in_cart{
+    position: absolute;
+    top: 19px;
+    left: 330px;
+}
+.quantity_products_in_cart_ad{
+    position: absolute;
+    top: 19px;
+    left: 330px;
+}
+.btn_my_orders{
+    position: absolute;
+    top: 35px;
+    left: 370px;
+}
