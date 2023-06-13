@@ -7,4 +7,4 @@
 В корзине есть возможность удалить товар из корзины и сформировать заказ.
 В заказах есть возможность удалить заказ.
 Есть возможность выйти из профиля.
-Технологии применяемые: Spring Boot, Spring Data, Spring Security, TomCat, Thymeleaf.
+Технологии применяемые: Spring Boot, Spring Data, Spring Security, MySql, Thymeleaf.
