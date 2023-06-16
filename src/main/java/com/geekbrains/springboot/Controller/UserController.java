@@ -57,7 +57,7 @@ public class UserController {
     public String showProductForAdmin(Model model){
         model.addAttribute("products",productService.findAll());
         model.addAttribute("user",userService.getUserD());
-        model.addAttribute("valueCart",userService.findProductListUserCart().size());
+        model.addAttribute("valueCart",cartService.findProductListUserCart().size());
         return "showProductsForAdmin";
     }
 

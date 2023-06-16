@@ -58,28 +58,29 @@ public class User {
         return roles;
     }
 
-    @ManyToMany
-    @JoinTable(name = "users_products_from_cart",
-    joinColumns = @JoinColumn(name = "user_id_c"),
-    inverseJoinColumns = @JoinColumn(name = "product_id"))
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<ProductFromCart> productFromCarts;
 
-    private List<ProductFromCart> productsFromCart;
-
-    public List<ProductFromCart> getProductsFromCart() {
-        return productsFromCart;
+    public List<ProductFromCart> getProductFromCarts() {
+        return productFromCarts;
     }
 
-    @ManyToMany
-    @JoinTable(name = "users_orders",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "order_id"))
-
+//    @ManyToMany
+//    @JoinTable(name = "users_orders",
+//            joinColumns = @JoinColumn(name = "user_id"),
+//            inverseJoinColumns = @JoinColumn(name = "order_id"))
+//
+//    private List<Order> orders;
+//
+//    public List<Order> getOrders() {
+//        return orders;
+//    }
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<Order> orders;
 
     public List<Order> getOrders() {
         return orders;
     }
-
     public Long getId() {
         return id;
     }

@@ -1,43 +1,50 @@
 package com.geekbrains.springboot.Service;
 
-import com.geekbrains.springboot.Entity.ConnectUserOrder;
 import com.geekbrains.springboot.Entity.Order;
 import com.geekbrains.springboot.Entity.ProductFromCart;
-import com.geekbrains.springboot.Repository.ConnectUserOrderRepository;
+import com.geekbrains.springboot.Entity.User;
 import com.geekbrains.springboot.Repository.OrderRepository;
+import com.geekbrains.springboot.Repository.UserRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class OrderService {
     private OrderRepository orderRepository;
     private UserService userService;
-    private ConnectUserOrderRepository connectUserOrderRepository;
+    private UserRepository userRepository;
+    private CartService cartService;
+    private User user;
 
-    public OrderService(OrderRepository orderRepository, UserService userService, ConnectUserOrderRepository connectUserOrderRepository) {
+    public OrderService(OrderRepository orderRepository, UserService userService, UserRepository userRepository, CartService cartService) {
         this.orderRepository = orderRepository;
         this.userService = userService;
-        this.connectUserOrderRepository = connectUserOrderRepository;
+        this.userRepository = userRepository;
+        this.cartService = cartService;
     }
 
     public Order addOrder(){
         Order order = new Order();
-        ConnectUserOrder connectUserOrder = new ConnectUserOrder();
         String list = "";
         int sum = 0;
-        for (ProductFromCart o: userService.findProductListUserCart()){
+        for (ProductFromCart o: cartService.findProductListUserCart()){
             list = list + o.getProductName() + " ";
         }
-        for (int i = 0; i < userService.findProductListUserCart().size(); i++){
-            sum = sum + userService.findProductListUserCart().get(i).getProductCoast();
+        for (int i = 0; i < cartService.findProductListUserCart().size(); i++){
+            sum = sum + cartService.findProductListUserCart().get(i).getProductCoast();
         }
         order.setListProduct(list);
         order.setClientName(userService.getUserD().getUsername());
         order.setTotalPrice(sum);
         order.setAddressClient(userService.getUserD().getAddress());
+        order.setUserId(userService.getUserD().getId());
         orderRepository.save(order);
-        connectUserOrder.setUserId(userService.getUserD().getId());
-        connectUserOrder.setOrderId(order.getId());
-        connectUserOrderRepository.save(connectUserOrder);
         return order;
+    }
+
+    public List<Order> findOrderListUser(){
+        user = userRepository.findById(userService.getUserD().getId()).get();
+        return user.getOrders();
     }
 }

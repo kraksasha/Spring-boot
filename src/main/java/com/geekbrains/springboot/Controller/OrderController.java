@@ -31,7 +31,7 @@ public class OrderController {
 
     @RequestMapping("/myOrders")
     public String findOrders(Model model){
-        model.addAttribute("orders", userService.findOrderListUser());
+        model.addAttribute("orders", orderService.findOrderListUser());
         return "showMyOrders";
     }
 }

@@ -56,14 +56,4 @@ public class UserService implements UserDetailsService {
     public com.geekbrains.springboot.Entity.User addUserInDB(com.geekbrains.springboot.Entity.User user){
          return userRepository.save(user);
     }
-
-    public List<ProductFromCart> findProductListUserCart(){
-        com.geekbrains.springboot.Entity.User user = userRepository.findById(userD.getId()).get();
-        return user.getProductsFromCart();
-    }
-
-    public List<Order> findOrderListUser(){
-        com.geekbrains.springboot.Entity.User user = userRepository.findById(userD.getId()).get();
-        return user.getOrders();
-    }
 }

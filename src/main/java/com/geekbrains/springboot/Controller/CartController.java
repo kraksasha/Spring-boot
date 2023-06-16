@@ -14,12 +14,6 @@ import org.springframework.web.bind.annotation.*;
 public class CartController {
     private CartService cartService;
     private ProductService productService;
-    private UserService userService;
-    @Autowired
-    public void setUserService(UserService userService) {
-        this.userService = userService;
-    }
-
     @Autowired
     public void setProductService(ProductService productService) {
         this.productService = productService;
@@ -41,10 +35,10 @@ public class CartController {
     @RequestMapping("/cart")
     public String showProductsToCart(Model model){
         int sum = 0;
-        for (int i = 0; i < userService.findProductListUserCart().size(); i++){
-            sum = sum + userService.findProductListUserCart().get(i).getProductCoast();
+        for (int i = 0; i < cartService.findProductListUserCart().size(); i++){
+            sum = sum + cartService.findProductListUserCart().get(i).getProductCoast();
         }
-        model.addAttribute("products",userService.findProductListUserCart());
+        model.addAttribute("products",cartService.findProductListUserCart());
         model.addAttribute("finalPrice",sum);
         return "showProductsToCart";
     }

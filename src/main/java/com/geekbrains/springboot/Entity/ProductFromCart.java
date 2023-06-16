@@ -12,10 +12,29 @@ public class ProductFromCart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-
     @Column(name = "product_id")
     private Long productId;
+    @Column(name = "product_name")
+    private String productName;
+    @Column(name = "product_coast")
+    private int productCoast;
+    @Column(name = "user_id")
+    private Long userId;
+    public Long getId() {
+        return id;
+    }
 
+    public Long getProductId() {
+        return productId;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public int getProductCoast() {
+        return productCoast;
+    }
     public void setId(Long id) {
         this.id = id;
     }
@@ -31,37 +50,19 @@ public class ProductFromCart {
     public void setProductCoast(int productCoast) {
         this.productCoast = productCoast;
     }
-
-    @Column(name = "product_name")
-    private String productName;
-
-    @Column(name = "product_coast")
-    private int productCoast;
-
-    @ManyToMany
-    @JoinTable(name = "users_products_from_cart",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id_c"))
-
-    private List<User> userList;
-
-    public List<User> getUserList() {
-        return userList;
+    public Long getUserId() {
+        return userId;
     }
 
-    public Long getId() {
-        return id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
+    @ManyToOne
+    @JoinColumn(name = "user_id", insertable = false,updatable = false)
 
-    public Long getProductId() {
-        return productId;
-    }
+    private User user;
 
-    public String getProductName() {
-        return productName;
-    }
-
-    public int getProductCoast() {
-        return productCoast;
+    public User getUser() {
+        return user;
     }
 }

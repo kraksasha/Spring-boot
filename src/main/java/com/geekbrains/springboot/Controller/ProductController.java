@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class ProductController {
     private ProductService productService;
     private UserService userService;
-
     private CartService cartService;
 
     @Autowired
@@ -58,7 +57,7 @@ public class ProductController {
     public String showProducts(Model model){
         model.addAttribute("products",productService.findAll());
         model.addAttribute("user",userService.getUserD());
-        model.addAttribute("valueCart",userService.findProductListUserCart().size());
+        model.addAttribute("valueCart",cartService.findProductListUserCart().size());
         return "showProducts";
     }
 
